@@ -1,0 +1,222 @@
+﻿<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | E-Shopper</title>
+    <link href="~/eshop/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/eshop/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/eshop/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/eshop/css/price-range.css" rel="stylesheet">
+    <link href="~/eshop/css/animate.css" rel="stylesheet">
+    <link href="~/eshop/css/main.css" rel="stylesheet">
+    <link href="~/eshop/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/eshop/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/eshop/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/eshop/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/eshop/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href="#"><i class="fa fa-phone"></i> +0 95 123 11 00</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> e-sopper@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="https://www.instagram.com/selvi.topcuu/"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/SelviiTopcu?t=UL3Lch4zLcNY6JOx29FZ1Q&s=09"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/selvi-top%C3%A7u-99a137a6"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/selvitopcu"><i class="fa fa-github"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 clearfix">
+                        <div class="logo pull-left">
+                            <a href="/Home/Index"><img src="~/eshop/images/home/logo.png" alt="" /></a>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 clearfix">
+                        <div class="shop-menu clearfix pull-right">
+                            <ul class="nav navbar-nav">
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="/User/Update"><i class="fa fa-user"></i> @Session["Ad"] @Session["Soyad"]</a></li>
+                                    <li><a href="/Account/LogOut"><i class="fa fa-lock"></i> Çıkış Yap</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Account/Login"><i class="fa fa-lock"></i> Giriş Yap</a></li>
+                                }
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li><a href="/Admin/Index"><i class="fa fa-lock"></i> Admin Paneli</a></li>
+                                }
+
+
+
+                                <li><a href="/Home/Index"> Anasayfa</a></li>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>
+                                        <a href="/Cart/Index">
+                                            <img src="~/Content/Image/sepet.png" width="30" height="30" /><label style="color:red">@{Html.RenderAction("TotalCount", "Cart");}</label>Sepetim
+                                        </a>
+                                    </li>
+                                    <li><a href="/Sales/Index"><i class="fa fa-dollar"></i> Satışlarım</a></li>
+                                }
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+
+    </header><!--/header-->
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container" >
+                <div class="row" >
+                    <div class="col-sm-6">
+                        <div class="companyinfo pull-right" >
+                            <h2><span>e</span>-shopper</h2>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-center" style="padding: 70px;">
+                            <ul class="nav navbar-nav">
+                                <li><a href="https://www.instagram.com/selvi.topcuu/"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/SelviiTopcu?t=UL3Lch4zLcNY6JOx29FZ1Q&s=09"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/selvi-top%C3%A7u-99a137a6"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://github.com/selvitopcu"><i class="fa fa-github"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    @*<div class="col-sm-7">
+            <div class="col-sm-3">
+                <div class="video-gallery text-center">
+                    <a href="#">
+                        <div class="iframe-img">
+                            <img src="~/eshop/images/home/iframe1.png" alt="" />
+                        </div>
+                        <div class="overlay-icon">
+                            <i class="fa fa-play-circle-o"></i>
+                        </div>
+                    </a>
+                    <p>Circle of Hands</p>
+                    <h2>24 DEC 2014</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="video-gallery text-center">
+                    <a href="#">
+                        <div class="iframe-img">
+                            <img src="~/eshop/images/home/iframe2.png" alt="" />
+                        </div>
+                        <div class="overlay-icon">
+                            <i class="fa fa-play-circle-o"></i>
+                        </div>
+                    </a>
+                    <p>Circle of Hands</p>
+                    <h2>24 DEC 2014</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="video-gallery text-center">
+                    <a href="#">
+                        <div class="iframe-img">
+                            <img src="~/eshop/images/home/iframe3.png" alt="" />
+                        </div>
+                        <div class="overlay-icon">
+                            <i class="fa fa-play-circle-o"></i>
+                        </div>
+                    </a>
+                    <p>Circle of Hands</p>
+                    <h2>24 DEC 2014</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="video-gallery text-center">
+                    <a href="#">
+                        <div class="iframe-img">
+                            <img src="~/eshop/images/home/iframe4.png" alt="" />
+                        </div>
+                        <div class="overlay-icon">
+                            <i class="fa fa-play-circle-o"></i>
+                        </div>
+                    </a>
+                    <p>Circle of Hands</p>
+                    <h2>24 DEC 2014</h2>
+                </div>
+            </div>
+        </div>*@
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2021. Tüm Hakları Sakldır.</p>
+                    <p class="pull-right">Designed by <span style="color:#f14a0b">Gökay KALKAN</span></p>
+                </div>
+            </div>
+        </div>
+
+    </footer><!--/Footer-->
+    <script src="~/eshop/js/jquery.js"></script>
+    <script src="~/eshop/js/bootstrap.min.js"></script>
+    <script src="~/eshop/js/jquery.scrollUp.min.js"></script>
+    <script src="~/eshop/js/price-range.js"></script>
+    <script src="~/eshop/js/jquery.prettyPhoto.js"></script>
+    <script src="~/eshop/js/main.js"></script>
+</body>
+</html>

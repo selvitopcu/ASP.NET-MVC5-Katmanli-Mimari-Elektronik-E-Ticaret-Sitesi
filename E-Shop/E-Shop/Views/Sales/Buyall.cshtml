@@ -1,0 +1,50 @@
+﻿@model List<EntityLayer.Entities.Cart>
+@{
+    ViewBag.Title = "BuyAll";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="container">
+        <h2>Merhaba @Session["Ad"] @Session["Soyad"] Satın Alma Sayfasına Hoşgeldiniz</h2>
+    </div>
+
+
+    <div class="container">
+        @using (Html.BeginForm("BuyAll2", "Sales", FormMethod.Post))
+        {
+
+            foreach (var item in Model)
+            {
+                <div class="form-group">
+                    <h5>ID: @Html.DisplayFor(x => item.Id)</h5>
+                </div>
+                <div class="form-group">
+                    <h5>Ürün Ad: @Html.DisplayFor(x => item.Product.Name)</h5>
+                </div>
+                <div class="form-group">
+                    <h5>Adet: @Html.DisplayFor(x => item.Quantity)</h5>
+                </div>
+                <div class="form-group">
+                    <h5>Tutar: @Html.DisplayFor(x => item.Price)</h5>
+                </div>
+                <div class="form-group">
+                    <h5>Resim: <img src="~/Content/Image/@item.Product.Image" width="50" height="50" /></h5>
+                </div>
+
+            }
+            <p style="color:red; text-align:center">@ViewBag.Tutar</p>
+            <div class="container">
+                <div class="form-group" style="float:left">
+                    <button class="btn btn-success">Onay</button>
+                </div>
+                <div style="float:right">
+                    <button href="/Cart/Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

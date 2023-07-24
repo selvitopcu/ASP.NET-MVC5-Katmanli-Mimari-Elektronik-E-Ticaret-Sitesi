@@ -1,0 +1,29 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<EntityLayer.Entities.Comment>
+@{
+    ViewBag.Title = "Comment";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>İçerik</th>
+        <th>Ürün Bilgisi</th>
+        <th>Kullanıcı</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.Contents </td>
+            <td> @item.Product.Name</td>
+            <td> @item.User.Name @item.User.SurName </td>
+            <td> @item.Date </td>
+            <td>@Html.ActionLink("Sil", "Delete", new { item.Id }, new { @class = "btn btn-danger", onclick = "return confirm ('Silmek istiyor musunuz?')" })</td>
+        </tr>
+    }
+
+</table>
